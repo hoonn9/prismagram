@@ -29,6 +29,6 @@
     "deploy": "prisma deploy",
     "generate": "prisma generate",
     "prisma": "yarn run deploy && yarn run generate",
-    "dev": "nodemon --exec babel-node src/server.js"
+    "dev": "nodemon --delay 3s --exec  babel-node src/server.js"
   }
 }

@@ -2,10 +2,11 @@ import "./env";
 import { GraphQLServer } from "graphql-yoga";
 import { sendSecretMail } from "./utils";
 import { authenticateJwt } from "./passport";
+import { prisma } from "../generated/prisma-client";
+import { isAuthenticated } from "./middlewares";
 import logger from "morgan";
 import schema from "./schema";
 import "./passport";
-import { prisma } from "../generated/prisma-client";
 
 const PORT = process.env.PORT || 4000;
 
@@ -13,7 +14,8 @@ const PORT = process.env.PORT || 4000;
 const server = new GraphQLServer({
   schema,
   context: ({ request }) => ({
-    request
+    request,
+    isAuthenticated
   })
 });
 
