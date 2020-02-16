@@ -1,6 +1,6 @@
 type User {
   id: ID! @id
-  avatar: String
+  avatar: String @default(value: "https://instagram.fhrk2-1.fna.fbcdn.net/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fhrk2-1.fna.fbcdn.net&_nc_ohc=G8wjGBgk5_YAX8SuD0g&oh=32b49e0131da2d16b58458372c810398&oe=5EE002F1")
   username: String! @unique
   email: String! @unique
   firstName: String @default(value: "")

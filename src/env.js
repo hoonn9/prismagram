@@ -1,3 +1,3 @@
 import dotenv from "dotenv";
-import path from "path";
-dotenv.config({ path: path.resolve(__dirname, ".env") });
+dotenv.config();
+// env가 package.json 경로를 기본으로 함
