@@ -1,12 +1,11 @@
 import "./env";
 import { GraphQLServer } from "graphql-yoga";
-import { sendSecretMail } from "./utils";
 import { authenticateJwt } from "./passport";
-import { prisma } from "../generated/prisma-client";
 import { isAuthenticated } from "./middlewares";
 import logger from "morgan";
 import schema from "./schema";
 import "./passport";
+import { uploadController } from "./upload";
 
 const PORT = process.env.PORT || 4000;
 
@@ -24,6 +23,9 @@ server.express.use(logger("dev"));
 // server.express.use(passport.authenticate("jwt"));
 // 서버에 전달되는 모든 요청은 authenticateJwt 를 통과
 server.express.use(authenticateJwt);
+// 서버/api/upload 에 upload 미들웨어를 실행하고 컨트롤러로 받음
+
+server.express.post("/api/upload", uploadController);
 server.start({ port: PORT }, () =>
   console.log(`Server running on http://localhost:${PORT}`)
 );
